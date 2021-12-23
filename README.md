@@ -32,3 +32,4 @@ Recommended extensions
 
 - StandardJS - JavaScript Standard Style [https://marketplace.visualstudio.com/items?itemName=standard.vscode-standard]
 - VS Code SCSS Formatter [https://marketplace.visualstudio.com/items?itemName=sibiraj-s.vscode-scss-formatter]
+- EJS Language Support [https://marketplace.visualstudio.com/items?itemName=DigitalBrainstem.javascript-ejs-support]
