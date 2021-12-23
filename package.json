@@ -4,7 +4,8 @@
   "private": true,
   "scripts": {
     "start": "node ./bin/www",
-    "dev": "nodemon ./bin/www"
+    "dev": "nodemon ./bin/www",
+    "sass:watch": "sass --watch public/scss:public/css --style compressed"
   },
   "dependencies": {
     "cookie-parser": "~1.4.4",
@@ -16,6 +17,12 @@
     "mssql": "^7.3.0"
   },
   "devDependencies": {
-    "nodemon": "^2.0.15"
+    "babel-eslint": "^10.1.0",
+    "nodemon": "^2.0.15",
+    "sass": "^1.45.1",
+    "standard": "^16.0.4"
+  },
+  "standard": {
+    "parser": "babel-eslint"
   }
 }

@@ -1,9 +1,17 @@
-var express = require('express');
-var router = express.Router();
+const adminRouter = require('./admin')
+const authRouter = require('./auth')
+const customerRouter = require('./customer')
+const driverRouter = require('./driver')
+const employeeRouter = require('./employee')
+const homeRouter = require('./home')
+const partnerRouter = require('./partner')
 
-/* GET home page. */
-router.get('/', function(req, res, next) {
-  
-});
-
-module.exports = router;
+module.exports = {
+  adminRouter,
+  authRouter,
+  customerRouter,
+  driverRouter,
+  employeeRouter,
+  homeRouter,
+  partnerRouter
+}
