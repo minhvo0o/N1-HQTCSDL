@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="vi">
+
+<head>
+  <%- include('../_template/head'); %>
+
+  <title>Thông tin hợp đồng</title>
+</head>
+
+<body>
+  <div class="container">
+    <h1>Thông tin hợp đồng</h1>
+
+    <form method="post" action="/partner/contract">
+      <div class="mb-3">
+        <label for="MSTDoiTac" class="form-label">Mã số thuế</label>
+        <input type="text" class="form-control" id="MSTDoiTac" name="MSTDoiTac" placeholder="Mã số thuế">
+      </div>
+
+      <div class="mb-3">
+        <label for="NguoiDaiDien" class="form-label">Người đại diện</label>
+        <input type="text" class="form-control" id="NguoiDaiDien" name="NguoiDaiDien" placeholder="Người đại diện">
+      </div>
+
+      <div class="mb-3">
+        <label for="SoChiNhanh" class="form-label">Số chi nhánh đăng kí</label>
+        <input type="number" class="form-control" id="SoChiNhanh" name="SoChiNhanh" placeholder="Số chi nhánh đăng kí">
+      </div>
+
+      <div class="mb-3">
+        <label for="DiaChiCacChiNhanh" class="form-label">Địa chỉ các chi nhánh</label>
+        <input type="number" class="form-control" id="DiaChiCacChiNhanh" name="DiaChiCacChiNhanh" placeholder="Địa chỉ các chi nhánh">
+      </div>
+
+      <button type="submit" class="btn btn-primary">Lập hợp đồng</button>
+    </form>
+  </div>
+
+  <%- include('../_template/foot'); %>
+</body>
+
+</html>

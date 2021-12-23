@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="vi">
+
+<head>
+  <%- include('../_template/head'); %>
+
+  <title>Đăng kí thông tin Tài xế</title>
+</head>
+
+<body>
+  <div class="container">
+    <h1>Đăng kí thông tin Tài xế</h1>
+
+    <form method="post" action="/driver/register">
+      <div class="mb-3">
+        <label for="HoTenTX" class="form-label">Họ tên</label>
+        <input type="text" class="form-control" id="HoTenTX" name="HoTenTX" placeholder="Họ tên" required>
+      </div>
+
+      <div class="mb-3">
+        <label for="CMND" class="form-label">CMND/CCCD</label>
+        <input type="text" class="form-control" id="CMND" name="CMND" placeholder="CMND/CCCD" required>
+      </div>
+
+      <div class="mb-3">
+        <label for="DienThoaiTX" class="form-label">Điện thoại</label>
+        <input type="phone" class="form-control" id="DienThoaiTX" name="DienThoaiTX" placeholder="Điện thoại" required>
+      </div>
+
+      <div class="mb-3">
+        <label for="DiaChiTX" class="form-label">Địa chỉ</label>
+        <input type="text" class="form-control" id="DiaChiTX" name="DiaChiTX" placeholder="Địa chỉ" required>
+      </div>
+
+      <div class="mb-3">
+        <label for="BienSoXe" class="form-label">Biển số xe</label>
+        <input type="text" class="form-control" id="BienSoXe" name="BienSoXe" placeholder="Biển số xe" required>
+      </div>
+
+      <div class="mb-3">
+        <label for="KhuVuc" class="form-label">Khu vực hoạt động</label>
+        <input type="text" class="form-control" id="KhuVuc" name="KhuVuc" placeholder="Khu vực hoạt động" required>
+      </div>
+
+      <div class="mb-3">
+        <label for="EmailTX" class="form-label">Email</label>
+        <input type="email" class="form-control" id="EmailTX" name="EmailTX" placeholder="Email" required>
+      </div>
+
+      <div class="mb-3">
+        <label for="TenNganHang" class="form-label">Ngân hàng</label>
+        <input type="text" class="form-control" id="TenNganHang" name="TenNganHang" placeholder="Ngân hàng">
+      </div>
+
+      <div class="mb-3">
+        <label for="TenChuTK" class="form-label">Tên chủ tài khoản</label>
+        <input type="text" class="form-control" id="TenChuTK" name="TenChuTK" placeholder="Tên chủ tài khoản">
+      </div>
+
+      <div class="mb-3">
+        <label for="MaTaiKhoan" class="form-label">Số tài khoản ngân hàng</label>
+        <input type="text" class="form-control" id="MaTaiKhoan" name="MaTaiKhoan" placeholder="Số tài khoản ngân hàng">
+      </div>
+
+      <button type="submit" class="btn btn-primary">Đăng ký</button>
+    </form>
+  </div>
+
+  <%- include('../_template/foot'); %>
+</body>
+
+</html>

@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="vi">
+
+<head>
+  <%- include('../_template/head'); %>
+
+  <title>Đăng ký</title>
+</head>
+
+<body>
+  <div class="container">
+    <h1>Đăng ký</h1>
+
+    <form method="post" action="/auth/login">
+      <div class="mb-3">
+        <label for="role" class="form-label">Bạn là?</label>
+        <select class="form-control" id="role" required>
+          <option value="customer">Khách hàng</option>
+          <option value="employee">Nhân viên</option>
+          <option value="partner">Đối tác</option>
+          <option value="driver">Tài xế</option>
+          <option value="admin">Quản trị</option>
+        </select>
+      </div>
+
+      <div class="mb-3">
+        <label for="Email" class="form-label">Email</label>
+        <input type="email" class="form-control" id="Email" name="Email" placeholder="Email" required>
+      </div>
+
+      <div class="mb-3">
+        <label for="MatKhau" class="form-label">Mật khẩu</label>
+        <input type="password" class="form-control" id="MatKhau" name="MatKhau" placeholder="Mật khẩu" required>
+      </div>
+
+      <div class="mb-3">
+        <label for="HoTen" class="form-label">Họ tên</label>
+        <input type="text" class="form-control" id="HoTen" name="HoTen" placeholder="Họ tên" required>
+      </div>
+
+      <div class="mb-3">
+        <label for="NgaySinh" class="form-label">Ngày sinh</label>
+        <input type="date" class="form-control" id="NgaySinh" name="NgaySinh" placeholder="Ngày sinh" required>
+      </div>
+
+      <div class="mb-3">
+        <label for="DienThoai" class="form-label">Điện thoại</label>
+        <input type="phone" class="form-control" id="DienThoai" name="DienThoai" placeholder="Điện thoại" required>
+      </div>
+
+      <div class="mb-3">
+        <button type="submit" class="btn btn-primary">Đăng ký</button>
+      </div>
+
+      <div>
+        <p>Bạn đã có tài khoản? <a href="/auth/login">Đăng nhập ngay</a></p>
+      </div>
+    </form>
+  </div>
+
+  <%- include('../_template/foot'); %>
+</body>
+
+</html>
