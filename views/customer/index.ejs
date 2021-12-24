@@ -3,11 +3,24 @@
 
 <head>
   <%- include('../_template/head'); %>
+  <title>Đăng kí làm Khách hàng</title>
 </head>
 
 <body>
-  <h1>Customer</h1>
-
+    <h2 class="card-title mt-5 text-center">Đăng kí thông tin khách hàng</h2>
+    <form action="">
+      <div class="container mt-5" style="max-width: 400px;">
+        <p class="mt-4">Họ tên</p>
+        <input type="text" class="form-control" name="name" id="name">
+        <p class="mt-4">Số điện thoại</p>
+        <input type="text" class="form-control" name="phone" id="phone">
+        <p class="mt-4">Địa chỉ</p>
+        <input type="text" class="form-control" name="address" id="address">
+        <p class="mt-4">Email</p>
+        <input type="text" class="form-control" name="email" id="email">
+        <button type="submit" class="btn btn-primary col-12 mt-5">Đăng kí</button>
+      </div>
+    </form>
   <%- include('../_template/foot'); %>
 </body>
 
