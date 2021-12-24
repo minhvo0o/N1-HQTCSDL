@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="vi">
+
+<head>
+  <%- include('../_template/head'); %>
+
+  <title>Quản lí sản phẩm</title>
+</head>
+
+<body>
+  <div class="container">
+    <h1>Quản lí sản phẩm</h1>
+
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <th scope="col">Mã SP</th>
+          <th scope="col">Thông tin</th>
+          <th scope="col">Chi nhánh</th>
+          <th scope="col">Tuỳ chỉnh</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% for(let i = 1; i <= 10; ++i) { %>
+          <tr>
+            <th scope="row">SP<%= i %></th>
+            <td>Gạo Sóc Trăng chất lượng cao <%= i %></td>
+            <td>Sóc Trăng</td>
+            <td>
+              <a href="#">Thêm</a>
+              <a href="#">Xoá</a>
+              <a href="#">Sửa</a>
+            </td>
+          </tr>
+        <% } %>
+      </tbody>
+    </table>
+
+    <nav aria-label="Page navigation example">
+      <ul class="pagination justify-content-center">
+        <li class="page-item">
+          <a class="page-link" href="#" aria-label="Previous">
+            <span aria-hidden="true">&laquo;</span>
+          </a>
+        </li>
+        <li class="page-item active" aria-current="page"><a class="page-link" href="#">1</a></li>
+        <li class="page-item"><a class="page-link" href="#">2</a></li>
+        <li class="page-item"><a class="page-link" href="#">3</a></li>
+        <li class="page-item"><a class="page-link" href="#">4</a></li>
+        <li class="page-item"><a class="page-link" href="#">5</a></li>
+        <li class="page-item">
+          <a class="page-link" href="#" aria-label="Next">
+            <span aria-hidden="true">&raquo;</span>
+          </a>
+        </li>
+      </ul>
+    </nav>
+  </div>
+
+  <%- include('../_template/foot'); %>
+</body>
+
+</html>
