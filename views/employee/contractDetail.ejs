@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="vi">
+
+<head>
+  <%- include('../_template/head'); %>
+  <title>Quản lí hợp đồng</title>
+</head>
+
+<body>
+    <h2 class="card-title mt-5 text-center">Xem thông tin hợp đồng</h2>
+    <form action="">
+      <div class="container mt-5" style="max-width: 400px;">
+        <p class="mt-4">Mã số thuế</p>
+        <input type="text" class="form-control" name="tax" id="tax" placeholder="123456789" readonly>
+        <p class="mt-4">Người đại diện</p>
+        <input type="text" class="form-control" name="presenter" id="presenter" placeholder="Võ Đức Minh" readonly>
+        <p class="mt-4">Số chi nhánh đăng kí</p>
+        <input type="text" class="form-control" name="branch" id="branch" placeholder="10" readonly>
+        <p class="mt-4">Địa chỉ chi nhánh chính</p>
+        <input type="text" class="form-control" name="address" id="address" placeholder="126 đường 3/2, Ninh Kiều, Hưng Lợi, Cần Thơ" readonly>
+        <button type="submit" class="btn btn-primary col-12 mt-5">Duyệt hợp đồng</button>
+      </div>
+    </form>
+  <%- include('../_template/foot'); %>
+</body>
+
+</html>
