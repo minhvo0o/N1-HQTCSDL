@@ -1,5 +1,5 @@
 const express = require('express')
-const { CustomerModel } = require('../models')
+const { CustomerModel, PartnerModel } = require('../models')
 const router = express.Router()
 
 router.get('/', function (req, res, next) {
@@ -15,8 +15,9 @@ router.get('/order-status', async (req, res, next) => {
   res.render('customer/order-status', { list: orders })
 })
 
-router.get('/order', function (req, res, next) {
-  res.render('customer/order')
+router.get('/order', async (req, res, next) => {
+  const partners = await PartnerModel.getPartners()
+  res.render('customer/order', { partnerList: partners })
 })
 
 module.exports = router
