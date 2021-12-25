@@ -4,47 +4,79 @@
 <head>
   <%- include('../_template/head'); %>
 
-  <title>Đăng kí thông tin Đối tác</title>
+  <title>Đăng kí thông tin đối tác</title>
 </head>
 
 <body>
   <div class="container">
-    <h1>Đăng kí thông tin Đối tác</h1>
+    <h1>Đăng kí thông tin đối tác</h1>
+
+    <% if (typeof error !== "undefined" && error) { %>
+      <div class="alert alert-danger" role="alert">
+        <%= error %>
+      </div>
+    <% } %>
+
+    <% if (typeof success !== "undefined" && success) { %>
+      <div class="alert alert-success" role="alert">
+        <%= success %>
+      </div>
+    <% } %>
 
     <form method="post" action="/partner/register">
       <div class="mb-3">
+        <label for="MSTDoiTac" class="form-label">Mã số thuế</label>
+        <input type="number" class="form-control" id="MSTDoiTac" name="MSTDoiTac" placeholder="Mã số thuế" value="<% if (typeof defaultValues !== "undefined") { %><%= defaultValues?.MSTDoiTac %><% } %>">
+      </div>
+
+      <div class="mb-3">
+        <label for="TenDoiTac" class="form-label">Tên đối tác</label>
+        <input type="text" class="form-control" id="TenDoiTac" name="TenDoiTac" placeholder="Tên đối tác" value="<% if (typeof defaultValues !== "undefined") { %><%= defaultValues?.TenDoiTac %><% } %>">
+      </div>
+
+      <div class="mb-3">
         <label for="NguoiDaiDien" class="form-label">Người đại diện</label>
-        <input type="text" class="form-control" id="NguoiDaiDien" name="NguoiDaiDien" placeholder="Người đại diện">
+        <input type="text" class="form-control" id="NguoiDaiDien" name="NguoiDaiDien" placeholder="Người đại diện" value="<% if (typeof defaultValues !== "undefined") { %><%= defaultValues?.NguoiDaiDien %><% } %>">
       </div>
 
       <div class="mb-3">
         <label for="ThanhPho" class="form-label">Thành phố</label>
-        <input type="text" class="form-control" id="ThanhPho" name="ThanhPho" placeholder="Thành phố">
+        <input type="text" class="form-control" id="ThanhPho" name="ThanhPho" placeholder="Thành phố" value="<% if (typeof defaultValues !== "undefined") { %><%= defaultValues?.ThanhPho %><% } %>">
       </div>
 
       <div class="mb-3">
         <label for="Quan" class="form-label">Quận</label>
-        <input type="text" class="form-control" id="Quan" name="Quan" placeholder="Quận">
+        <input type="text" class="form-control" id="Quan" name="Quan" placeholder="Quận" value="<% if (typeof defaultValues !== "undefined") { %><%= defaultValues?.Quan %><% } %>">
       </div>
 
       <div class="mb-3">
         <label for="SoChiNhanh" class="form-label">Số chi nhánh</label>
-        <input type="number" class="form-control" id="SoChiNhanh" name="SoChiNhanh" placeholder="Số chi nhánh">
+        <input type="number" class="form-control" id="SoChiNhanh" name="SoChiNhanh" placeholder="Số chi nhánh" value="<% if (typeof defaultValues !== "undefined") { %><%= defaultValues?.SoChiNhanh %><% } %>">
       </div>
 
       <div class="mb-3">
         <label for="DonMoiNgay" class="form-label">Số lượng đơn hàng mỗi ngày</label>
-        <input type="number" class="form-control" id="DonMoiNgay" name="DonMoiNgay" placeholder="Số lượng đơn hàng mỗi ngày">
+        <input type="number" class="form-control" id="DonMoiNgay" name="DonMoiNgay" placeholder="Số lượng đơn hàng mỗi ngày" value="<% if (typeof defaultValues !== "undefined") { %><%= defaultValues?.DonMoiNgay %><% } %>">
       </div>
 
       <div class="mb-3">
         <label for="LoaiHang" class="form-label">Loại hàng vận chuyển</label>
-        <input type="text" class="form-control" id="LoaiHang" name="LoaiHang" placeholder="Loại hàng vận chuyển">
+        <input type="text" class="form-control" id="LoaiHang" name="LoaiHang" placeholder="Loại hàng vận chuyển" value="<% if (typeof defaultValues !== "undefined") { %><%= defaultValues?.LoaiHang %><% } %>">
       </div>
 
       <div class="mb-3">
         <label for="DiaChiKinhDoanh" class="form-label">Địa chỉ kinh doanh</label>
-        <input type="text" class="form-control" id="DiaChiKinhDoanh" name="DiaChiKinhDoanh" placeholder="Địa chỉ kinh doanh">
+        <input type="text" class="form-control" id="DiaChiKinhDoanh" name="DiaChiKinhDoanh" placeholder="Địa chỉ kinh doanh" value="<% if (typeof defaultValues !== "undefined") { %><%= defaultValues?.DiaChiKinhDoanh %><% } %>">
+      </div>
+
+      <div class="mb-3">
+        <label for="DienThoaiDT" class="form-label">Điện thoại</label>
+        <input type="tel" class="form-control" id="DienThoaiDT" name="DienThoaiDT" placeholder="Điện thoại" value="<% if (typeof defaultValues !== "undefined") { %><%= defaultValues?.DienThoaiDT %><% } %>">
+      </div>
+
+      <div class="mb-3">
+        <label for="Email" class="form-label">Email</label>
+        <input type="email" class="form-control" id="Email" name="Email" placeholder="Email" value="<% if (typeof defaultValues !== "undefined") { %><%= defaultValues?.Email %><% } %>">
       </div>
 
       <button type="submit" class="btn btn-primary">Đăng kí</button>
