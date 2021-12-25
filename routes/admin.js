@@ -2,7 +2,7 @@ const express = require('express')
 const router = express.Router()
 
 router.get('/', function (req, res, next) {
-  res.send('Admin')
+  res.render('admin/index')
 })
 
 module.exports = router

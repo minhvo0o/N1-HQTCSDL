@@ -3,10 +3,109 @@
 
 <head>
   <%- include('../_template/head'); %>
+  <title>Quản lí tài khoản hàng</title>
 </head>
 
 <body>
-  <h1>Admin</h1>
+  <h2 class="card-title mt-5 text-center">Quản lí tài khoản</h2>
+    
+    <div class="container mt-5" style="max-width: 800px;">
+
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Quyền</th>
+            <th scope="col">Tên</th>
+            <th scope="col">Thao tác dữ liệu</th>
+            <th scope="col">Thao tác giao diện</th>
+            <th scope="col">Tuỳ chỉnh</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">1</th>
+            <td>Admin</td>
+            <td>Võ Đức Minh</td>
+            <td><input class="form-check-input" type="checkbox" value="" id="dataEnable"></td>
+            <td><input class="form-check-input" type="checkbox" value="" id="uiEnable"></td>
+            <td>
+              <div class="row">
+                <div class="col">
+                  <a href="#">Xoá</a>
+                </div>
+                <div class="col">
+                  <a href="#">Sửa</a>
+                </div>
+                <div class="col">
+                  <a href="#">Khoá</a>
+                </div>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <th scope="row">2</th>
+            <td>Quyền</td>
+            <td>Tên</td>
+            <td><input class="form-check-input" type="checkbox" value="" id="dataEnable"></td>
+            <td><input class="form-check-input" type="checkbox" value="" id="uiEnable"></td>
+            <td>
+              <div class="row">
+                <div class="col">
+                  <a href="#">Xoá</a>
+                </div>
+                <div class="col">
+                  <a href="#">Sửa</a>
+                </div>
+                <div class="col">
+                  <a href="#">Khoá</a>
+                </div>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <th scope="row">3</th>
+            <td>Quyền</td>
+            <td>Tên</td>
+            <td><input class="form-check-input" type="checkbox" value="" id="dataEnable"></td>
+            <td><input class="form-check-input" type="checkbox" value="" id="uiEnable"></td>
+            <td>
+              <div class="row">
+                <div class="col">
+                  <a href="#">Xoá</a>
+                </div>
+                <div class="col">
+                  <a href="#">Sửa</a>
+                </div>
+                <div class="col">
+                  <a href="#">Khoá</a>
+                </div>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    
+      <div class="row justify-content-between mt-4">
+        <div class="col-4">
+          <button class="btn btn-primary">Thêm tài khoản</button>
+        </div>
+        <div class="col-4">
+          <nav aria-label="...">
+            <ul class="pagination justify-content-end">
+              <li class="page-item disabled">
+                <span class="page-link">Previous</span>
+              </li>
+              <li class="page-item active"><a class="page-link" href="#">1</a></li>
+              <li class="page-item"><a class="page-link" href="#">2</a></li>
+              <li class="page-item"><a class="page-link" href="#">3</a></li>
+              <li class="page-item">
+                <a class="page-link" href="#">Next</a>
+              </li>
+            </ul>
+          </nav>
+        </div>
+     </div>
 
   <%- include('../_template/foot'); %>
 </body>
