@@ -9,32 +9,26 @@
 <body>
     <h2 class="card-title mt-5 text-center">Xem tình trạng đơn hàng</h2>
     
-    <div class="container mt-5" style="max-width: 800px;">
+    <div class="container mt-5" style="max-width: 1200px;">
 
       <table class="table">
         <thead class="thead-light">
           <tr>
             <th scope="col">Mã ĐH</th>
-            <th scope="col">Thông tin</th>
-            <th scope="col">Tình trạng</th>
+            <th scope="col">Phí vận chuyển</th>
+            <th scope="col">Địa chỉ giao hàng</th>
+            <th scope="col">Ngày đặt hàng</th>
           </tr>
         </thead>
         <tbody>
+          <% list.forEach(order => { %> 
           <tr>
-            <td>ST21</td>
-            <td>Gạo Sóc Trăng chất lượng cao</td>
-            <td>Đang vận chuyển</td>
+            <td> <%= order.MaDH %></td>
+            <td> <%= order.PhiVC %></td>
+            <td> <%= order.DiaChiGiaoHang %></td>
+            <td> <%= order.NgayDatHang %></td>
           </tr>
-          <tr>
-            <td>ST24</td>
-            <td>Lorem Ipsum</td>
-            <td>Lorem Ipsum</td>
-          </tr>
-          <tr>
-            <td>ST28</td>
-            <td>Lorem Ipsum</td>
-            <td>Lorem Ipsum</td>
-          </tr>
+          <% }) %>
         </tbody>
       </table>
     

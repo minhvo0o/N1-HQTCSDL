@@ -45,14 +45,23 @@ const { EmployeeModel } = require('../models')
 
 router.get('/', async (req, res, next) => {
   try {
-    const employeeList = await EmployeeModel.getEmployees()
-    res.render('employee/index', { list: employeeList })
+    const employees = await EmployeeModel.getEmployees()
+    res.render('employee/index', { list: employees })
   } catch (err) {
     res.send('Error ' + err.message)
   }
 })
 
-router.get('/contractDetail', (req, res, next) => {
+router.get('/contracts', async (req, res, next) => {
+  try {
+    const contracts = await EmployeeModel.getContracts()
+    res.render('employee/contracts', { list: contracts })
+  } catch (err) {
+    res.send('Error ' + err.message)
+  }
+})
+
+router.get('/contract-detail', async (req, res, next) => {
   res.render('employee/contract-detail')
 })
 
