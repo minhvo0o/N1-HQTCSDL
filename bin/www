@@ -7,12 +7,16 @@
 const app = require('../app')
 const debug = require('debug')('n1-hqtcsdl:server')
 const http = require('http')
+const { databaseUtil } = require('../utils')
+const config = require('../config')
+
+const { connection } = databaseUtil
 
 /**
  * Get port from environment and store in Express.
  */
 
-const port = normalizePort(process.env.PORT || '3000')
+const port = normalizePort(config.PORT || '3000')
 app.set('port', port)
 
 /**
@@ -25,7 +29,6 @@ const server = http.createServer(app)
  * Listen on provided port, on all network interfaces.
  */
 
-server.listen(port)
 server.on('error', onError)
 server.on('listening', onListening)
 
@@ -87,3 +90,15 @@ function onListening () {
   debug('Listening on ' + bind)
   console.log('Listening on ' + bind)
 }
+
+// Attempt to connect and execute queries if connection goes through
+connection.on('connect', err => {
+  if (err) {
+    console.error(err.message)
+  } else {
+    console.log('Connected!')
+    server.listen(port)
+  }
+})
+
+connection.connect()

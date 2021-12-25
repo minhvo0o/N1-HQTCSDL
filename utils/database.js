@@ -1,11 +1,12 @@
-const { Connection, Request } = require('tedious')
+const { Connection } = require('tedious')
+const config = require('../config')
 
 // Create connection to database
-const config = {
+const connectionConfig = {
   authentication: {
     options: {
-      userName: 'studee', // update me
-      password: '6p8xfiR5FqmdJbhD' // update me
+      userName: config.AZURE_USERNAME, // update me
+      password: config.AZURE_PASSWORD // update me
     },
     type: 'default'
   },
@@ -45,54 +46,8 @@ const config = {
 
 */
 
-const connection = new Connection(config)
-
-// Attempt to connect and execute queries if connection goes through
-// connection.on('connect', err => {
-//   if (err) {
-//     console.error(err.message)
-//   } else {
-//     queryDatabase()
-//   }
-// })
-
-connection.connect()
-
-const employeeList2 = function queryDatabase() {
-  console.log('Reading rows from the Table...')
-
-  // Read all rows from table
-  const request = new Request(
-    'SELECT * FROM NhanVien',
-
-    (err, rowCount) => {
-      if (err) {
-        console.error(err.message)
-      } else {
-        console.log(`${rowCount} row(s) returned`)
-      }
-    }
-  )
-
-  request.on('row', columns => {
-    columns.forEach(column => {
-      console.log('%s\t%s', column.metadata.colName, column.value)
-    })
-  })
-
-  connection.execSql(request)
-}
-
-const employeeList = function () {
-  const sql = 'SELECT * FROM NhanVien'
-  const request = new Request(sql, function (err) {
-    if (err) throw err
-    connection.execSql(request)
-  })
-}
+const connection = new Connection(connectionConfig)
 
 module.exports = {
-  connection,
-  employeeList2,
-  employeeList
+  connection
 }
