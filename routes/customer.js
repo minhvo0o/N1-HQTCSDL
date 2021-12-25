@@ -7,11 +7,11 @@ router.get('/', function (req, res, next) {
 })
 
 router.get('/editInfo', function (req, res, next) {
-  res.render('customer/editInfo')
+  res.render('customer/edit-info')
 })
 
 router.get('/orderStatus', function (req, res, next) {
-  res.render('customer/orderStatus')
+  res.render('customer/order-status')
 })
 
 router.get('/order', function (req, res, next) {
