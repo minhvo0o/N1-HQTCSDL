@@ -25,7 +25,7 @@ router.post('/register', async (req, res) => {
     await PartnerModel.createPartner(req.body)
     res.render('partner/register', {
       defaultValues: req.body,
-      success: 'Đăng kí thông tin đối tác'
+      success: 'Đăng kí thông tin đối tác thành công'
     })
   } catch (err) {
     res.render('partner/register', {
@@ -43,6 +43,20 @@ router.get('/contract', async (req, res, next) => {
     partners,
     employees
   })
+})
+
+router.post('/contract', async (req, res) => {
+  try {
+    await PartnerModel.createContract(req.body)
+    res.send('partner/contract', {
+      success: 'Thêm thông tin hợp đồng thành công'
+    })
+  } catch (err) {
+    res.render('partner/contract', {
+      defaultValues: req.body,
+      error: err.message
+    })
+  }
 })
 
 router.get('/manage-product', function (req, res) {
