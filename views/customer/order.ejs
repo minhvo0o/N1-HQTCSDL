@@ -13,20 +13,22 @@
     <div class="row">
       <div class="col">
         <h5 class="text-center">Danh sách doanh nghiệp</h5>
-        <% for (let partner of partnerList) { %> 
-        <div class="list-group mt-5">
-          <a href="#" class="list-group-item list-group-item-action"><%= partner.TenDoiTac%></a>
+          <div class="form-group mt-5">
+          <select multiple class="form-control" style="height: 400px"id="exampleFormControlSelect1">
+            <% for (let partner of partnerList) { %> 
+            <option><%= partner.TenDoiTac%></option>
+            <% } %> 
+          </select>
         </div>
-        <% } %> 
       </div>
       <div class="col">
         <h5 class="text-center">Danh sách sản phẩm</h5>
-        <div class="list-group mt-5">
-          <a href="#" class="list-group-item list-group-item-action">SP</a>
-          <a href="#" class="list-group-item list-group-item-action">SP</a>
-          <a href="#" class="list-group-item list-group-item-action">SP</a>
-          <a href="#" class="list-group-item list-group-item-action">SP</a>
-          <a href="#" class="list-group-item list-group-item-action">SP</a>
+        <div class="form-group mt-5">
+          <select multiple class="form-control" style="height: 400px"id="exampleFormControlSelect1">
+            <% for (let product of productList) { %> 
+            <option><%= product.TenSP%></option>
+            <% } %> 
+          </select>
         </div>
       </div>
       <div class="col">
