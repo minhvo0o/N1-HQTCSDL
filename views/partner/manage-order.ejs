@@ -8,52 +8,62 @@
 </head>
 
 <body>
+  <%- include('../_template/navbar'); %>
+
   <div class="container">
-    <h1>Quản lí đơn hàng</h1>
+    <div class="row">
+      <div class="col-12 col-md-3">
+        <%- include('../_template/sidebar/partner'); %>
+      </div>
 
-    <table class="table table-hover">
-      <thead>
-        <tr>
-          <th scope="col">Mã ĐH</th>
-          <th scope="col">Thông tin</th>
-          <th scope="col">Tình trạng</th>
-          <th scope="col">Tuỳ chỉnh</th>
-        </tr>
-      </thead>
-      <tbody>
-        <% for(let order of orders) { %>
-          <tr>
-            <td> <%= order.MaDH %></td>
-            <td> <%= order.TenSP %></td>
-            <td> <%= order.TinhTrangVC %></td>
-            <td>
-              <a href="#">Xem</a>
-              <a href="#">Sửa</a>
-            </td>
-          </tr>
-        <% } %>
-      </tbody>
-    </table>
+      <div class="col-12 col-md-9">
+        <h1>Quản lí đơn hàng</h1>
 
-    <nav aria-label="Page navigation example">
-      <ul class="pagination justify-content-center">
-        <li class="page-item">
-          <a class="page-link" href="#" aria-label="Previous">
-            <span aria-hidden="true">&laquo;</span>
-          </a>
-        </li>
-        <li class="page-item active" aria-current="page"><a class="page-link" href="#">1</a></li>
-        <li class="page-item"><a class="page-link" href="#">2</a></li>
-        <li class="page-item"><a class="page-link" href="#">3</a></li>
-        <li class="page-item"><a class="page-link" href="#">4</a></li>
-        <li class="page-item"><a class="page-link" href="#">5</a></li>
-        <li class="page-item">
-          <a class="page-link" href="#" aria-label="Next">
-            <span aria-hidden="true">&raquo;</span>
-          </a>
-        </li>
-      </ul>
-    </nav>
+        <table class="table table-hover">
+          <thead>
+            <tr>
+              <th scope="col">Mã ĐH</th>
+              <th scope="col">Thông tin</th>
+              <th scope="col">Tình trạng</th>
+              <th scope="col">Tuỳ chỉnh</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% for(let order of orders) { %>
+              <tr>
+                <td> <%= order.MaDH %></td>
+                <td> <%= order.TenSP %></td>
+                <td> <%= order.TinhTrangVC %></td>
+                <td>
+                  <a href="#">Xem</a>
+                  <a href="#">Sửa</a>
+                </td>
+              </tr>
+            <% } %>
+          </tbody>
+        </table>
+
+        <nav aria-label="Page navigation example">
+          <ul class="pagination justify-content-center">
+            <li class="page-item">
+              <a class="page-link" href="#" aria-label="Previous">
+                <span aria-hidden="true">&laquo;</span>
+              </a>
+            </li>
+            <li class="page-item active" aria-current="page"><a class="page-link" href="#">1</a></li>
+            <li class="page-item"><a class="page-link" href="#">2</a></li>
+            <li class="page-item"><a class="page-link" href="#">3</a></li>
+            <li class="page-item"><a class="page-link" href="#">4</a></li>
+            <li class="page-item"><a class="page-link" href="#">5</a></li>
+            <li class="page-item">
+              <a class="page-link" href="#" aria-label="Next">
+                <span aria-hidden="true">&raquo;</span>
+              </a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </div>
   </div>
 
   <%- include('../_template/foot'); %>

@@ -4,12 +4,12 @@
 <head>
   <%- include('../_template/head'); %>
 
-  <title>Đăng kí thông tin đối tác</title>
+  <title>Đăng kí đối tác</title>
 </head>
 
 <body>
   <div class="container">
-    <h1>Đăng kí thông tin đối tác</h1>
+    <h1>Đăng kí đối tác</h1>
 
     <% if (typeof error !== "undefined" && error) { %>
       <div class="alert alert-danger" role="alert">
@@ -26,7 +26,21 @@
     <form method="post" action="/partner/register">
       <div class="mb-3">
         <label for="MSTDoiTac" class="form-label">Mã số thuế</label>
-        <input type="number" class="form-control" id="MSTDoiTac" name="MSTDoiTac" placeholder="Mã số thuế" value="<% if (typeof defaultValues !== "undefined") { %><%= defaultValues?.MSTDoiTac %><% } %>">
+        <input
+          type="number"
+          class="form-control"
+          id="MSTDoiTac"
+          name="MSTDoiTac"
+          placeholder="Mã số thuế"
+          value="<% if (typeof defaultValues !== "undefined") { %><%= defaultValues?.MSTDoiTac %><% } %>"
+          aria-describedby="MSTDoiTacHelp"
+        >
+        <div id="MSTDoiTacHelp" class="form-text">Sử dụng Mã số thuế để đăng nhập tài khoản.</div>
+      </div>
+
+      <div class="mb-3">
+        <label for="MatKhau" class="form-label">Mật khẩu</label>
+        <input type="text" class="form-control" id="MatKhau" name="MatKhau" placeholder="Mã số thuế">
       </div>
 
       <div class="mb-3">

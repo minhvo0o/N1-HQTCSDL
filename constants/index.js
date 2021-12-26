@@ -1,0 +1,7 @@
+module.exports = {
+  COOKIE_USERNAME: 'N1_HQTCSDL/USERNAME',
+  COOKIE_PASSWORD: 'N1_HQTCSDL/PASSWORD',
+  COOKIE_ROLE: 'N1_HQTCSDL/ROLE',
+
+  cookieOptions: { maxAge: 30 * 24 * 60 * 60 }
+}

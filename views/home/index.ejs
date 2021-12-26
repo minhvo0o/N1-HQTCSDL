@@ -3,11 +3,28 @@
 
 <head>
   <%- include('../_template/head'); %>
+
+  <title>Trang chủ</title>
 </head>
 
 <body>
-  <h1>Home</h1>
-  <button class="btn btn-primary">Button</button>
+  <%- include('../_template/navbar'); %>
+
+  <div class="container">
+    <div class="row">
+      <div class="col-12 col-md-3">
+        <%- include('../_template/sidebar/partner'); %>
+      </div>
+
+      <div class="col-12 col-md-9">
+        <h1>Hi, <%= currentUser.username %></h1>
+        <ul>
+          <li>Loại tài khoản : <%= currentUser.role %></li>
+          <li><a href="/auth/logout">Đăng xuất</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
 
   <%- include('../_template/foot'); %>
 </body>

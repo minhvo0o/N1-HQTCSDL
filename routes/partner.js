@@ -16,7 +16,6 @@ router.get('/register', (req, res, next) => {
   //   DienThoaiDT: '0777888148',
   //   Email: 'ncdai@ncdai.vn'
   // }
-
   res.render('partner/register')
 })
 

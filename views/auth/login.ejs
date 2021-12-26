@@ -11,20 +11,52 @@
   <div class="container">
     <h1>Đăng nhập</h1>
 
+    <% if (typeof error !== "undefined" && error) { %>
+      <div class="alert alert-danger" role="alert">
+        <%= error %>
+      </div>
+    <% } %>
+
     <form method="post" action="/auth/login">
       <div class="mb-3">
-        <label for="Email" class="form-label">Tên đăng nhập</label>
-        <input type="text" class="form-control" id="Email" name="Email" placeholder="Tên đăng nhập">
+        <label for="role" class="form-label">Bạn là?</label>
+        <select class="form-control" name="role" id="role" required>
+          <option value="">Loại tài khoản</option>
+          <option value="KhachHang">Khách hàng</option>
+          <option value="NhanVien">Nhân viên</option>
+          <option value="DoiTac">Đối tác</option>
+          <option value="TaiXe">Tài xế</option>
+          <option value="Admins">Quản trị</option>
+        </select>
       </div>
 
-      <div class="mb-3">
-        <label for="MatKhau" class="form-label">Mật khẩu</label>
-        <input type="password" class="form-control" id="MatKhau" name="MatKhau" placeholder="Mật khẩu">
-      </div>
+      <% if (role) { %>
+        <div class="mb-3">
+          <label for="username" class="form-label">
+            <% if (role === "KhachHang") { %>
+              Mã khách hàng
+            <% } else if (role === "NhanVien") { %>
+              MST Nhân viên
+            <% } else if (role === "DoiTac") { %>
+              MST Đối tác
+            <% } else if (role === "TaiXe") { %>
+              Mã Tài xế
+            <% } else { %>
+              Tên đăng nhập
+            <% } %>
+          </label>
+          <input type="text" class="form-control" id="username" name="username" placeholder="Tên đăng nhập">
+        </div>
 
-      <div class="mb-3">
-        <button type="submit" class="btn btn-primary">Đăng nhập</button>
-      </div>
+        <div class="mb-3">
+          <label for="password" class="form-label">Mật khẩu</label>
+          <input type="password" class="form-control" id="password" name="password" placeholder="Mật khẩu">
+        </div>
+
+        <div class="mb-3">
+          <button type="submit" class="btn btn-primary">Đăng nhập</button>
+        </div>
+      <% } %>
 
       <div>
         <p>Bạn chưa có tài khoản? <a href="/auth/register">Đăng ký ngay</a></p>
@@ -33,6 +65,18 @@
   </div>
 
   <%- include('../_template/foot'); %>
+
+  <script type="text/javascript">
+    $(document).ready(function() {
+      $('#role').val("<%= role %>")
+
+      $('#role').change(function() {
+        var role = $('#role').val()
+        window.location = "/auth/login?role=" + role
+        console.log(role)
+      })
+    })
+  </script>
 </body>
 
 </html>
