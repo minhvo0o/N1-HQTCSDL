@@ -6,7 +6,6 @@ const { connection } = databaseUtil
 
 const getPartners = function queryDatabase () {
   return new Promise((resolve, reject) => {
-    // Read all rows from table
     const request = new Request(
       'SELECT * FROM DoiTac',
       (err, rowCount, rows) => {
@@ -82,7 +81,6 @@ const createPartner = (body) => {
     const request = new Request(sql, function (err) {
       if (err) {
         reject(err)
-        console.log(err)
       }
     })
 
@@ -121,7 +119,7 @@ const createPartner = (body) => {
 const createContract = (body) => {
   return new Promise((resolve, reject) => {
     const sql = `
-      INSERT DoiTac (
+      INSERT HopDong (
         MaHopDong,
         MSTDoiTac,
         MSTNhanVien,
@@ -149,7 +147,6 @@ const createContract = (body) => {
     const request = new Request(sql, (err) => {
       if (err) {
         reject(err)
-        console.log(err)
       }
     })
 
@@ -158,7 +155,7 @@ const createContract = (body) => {
     request.addParameter('MSTNhanVien', TYPES.Int, body.MSTNhanVien)
     request.addParameter('ThoiHan', TYPES.Date, body.ThoiHan)
     request.addParameter('PhanTramHoaHong', TYPES.Int, body.PhanTramHoaHong)
-    request.addParameter('TinhTrangHD', TYPES.Bit, body.TinhTrangHD)
+    request.addParameter('TinhTrangHD', TYPES.Bit, parseInt(body.TinhTrangHD))
 
     const rows = []
 

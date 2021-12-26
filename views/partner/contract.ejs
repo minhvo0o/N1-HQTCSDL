@@ -11,6 +11,18 @@
   <div class="container">
     <h1>Thông tin hợp đồng</h1>
 
+    <% if (typeof error !== "undefined" && error) { %>
+      <div class="alert alert-danger" role="alert">
+        <%= error %>
+      </div>
+    <% } %>
+
+    <% if (typeof success !== "undefined" && success) { %>
+      <div class="alert alert-success" role="alert">
+        <%= success %>
+      </div>
+    <% } %>
+
     <form method="post" action="/partner/contract">
       <div class="mb-3">
         <label for="MaHopDong" class="form-label">Mã hợp đồng</label>

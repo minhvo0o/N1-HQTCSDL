@@ -46,14 +46,24 @@ router.get('/contract', async (req, res, next) => {
 })
 
 router.post('/contract', async (req, res) => {
+  let partners = []
+  let employees = []
+
   try {
+    partners = await PartnerModel.getPartners()
+    employees = await EmployeeModel.getEmployees()
+
     await PartnerModel.createContract(req.body)
-    res.send('partner/contract', {
+
+    res.render('partner/contract', {
+      partners,
+      employees,
       success: 'Thêm thông tin hợp đồng thành công'
     })
   } catch (err) {
     res.render('partner/contract', {
-      defaultValues: req.body,
+      partners,
+      employees,
       error: err.message
     })
   }
