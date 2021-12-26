@@ -3,7 +3,7 @@ const { databaseUtil } = require('../utils')
 
 const { connection } = databaseUtil
 
-const createPartner = function queryDatabase (body) {
+const createPartner = function queryDatabase(body) {
   return new Promise((resolve, reject) => {
     const sql = `
       INSERT DoiTac (
