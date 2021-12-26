@@ -1,8 +1,8 @@
 const { Request } = require('tedious')
-// const { databaseUtil } = require('../utils')
-// const { connection } = databaseUtil
+const { databaseUtil } = require('../utils')
+const { connection } = databaseUtil
 
-const getProducts = (connection) => {
+const getProducts = () => {
   return new Promise((resolve, reject) => {
     // Read all rows from table
     const request = new Request(
