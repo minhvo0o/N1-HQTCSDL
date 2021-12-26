@@ -7,44 +7,52 @@
 </head>
 
 <body>
-    <h2 class="card-title mt-5 text-center">Xem tình trạng đơn hàng</h2>
-    
-    <div class="container mt-5" style="max-width: 1200px;">
+  <%- include('../_template/navbar'); %>
 
-      <table class="table table-hover">
-        <thead>
-          <tr>
-            <th scope="col">Mã ĐH</th>
-            <th scope="col">Thông tin</th>
-            <th scope="col">Tình trạng</th>
-          </tr>
-        </thead>
-        <tbody>
-          <% for(let order of orders) { %>
+  <div class="container">
+    <div class="row">
+      <div class="col-12 col-md-3">
+        <%- include('../_template/sidebar/customer'); %>
+      </div>
+
+      <div class="col-12 col-md-9">
+        <h1>Xem tình trạng đơn hàng</h1>
+
+        <table class="table table-hover">
+          <thead>
             <tr>
-              <td> <%= order.MaDH %></td>
-              <td> <%= order.TenSP %></td>
-              <td> <%= order.TinhTrangVC %></td>
+              <th scope="col">Mã ĐH</th>
+              <th scope="col">Thông tin</th>
+              <th scope="col">Tình trạng</th>
             </tr>
-          <% } %>
-        </tbody>
-      </table>
-    
-      <nav aria-label="...">
-        <ul class="pagination justify-content-end">
-          <li class="page-item disabled">
-            <span class="page-link">Previous</span>
-          </li>
-          <li class="page-item active"><a class="page-link" href="#">1</a></li>
-          <li class="page-item"><a class="page-link" href="#">2</a></li>
-          <li class="page-item"><a class="page-link" href="#">3</a></li>
-          <li class="page-item">
-            <a class="page-link" href="#">Next</a>
-          </li>
-        </ul>
-      </nav>
+          </thead>
+          <tbody>
+            <% for(let order of orders) { %>
+              <tr>
+                <td> <%= order.MaDH %></td>
+                <td> <%= order.TenSP %></td>
+                <td> <%= order.TinhTrangVC %></td>
+              </tr>
+            <% } %>
+          </tbody>
+        </table>
 
+        <!-- <nav aria-label="...">
+          <ul class="pagination justify-content-end">
+            <li class="page-item disabled">
+              <span class="page-link">Previous</span>
+            </li>
+            <li class="page-item active"><a class="page-link" href="#">1</a></li>
+            <li class="page-item"><a class="page-link" href="#">2</a></li>
+            <li class="page-item"><a class="page-link" href="#">3</a></li>
+            <li class="page-item">
+              <a class="page-link" href="#">Next</a>
+            </li>
+          </ul>
+        </nav> -->
+      </div>
     </div>
+  </div>
 
   <%- include('../_template/foot'); %>
 </body>

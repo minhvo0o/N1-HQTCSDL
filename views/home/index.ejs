@@ -13,7 +13,21 @@
   <div class="container">
     <div class="row">
       <div class="col-12 col-md-3">
-        <%- include('../_template/sidebar/partner'); %>
+        <% if (currentUser.role === "Admins") { %>
+          <%- include('../_template/sidebar/admin'); %>
+        <% } %>
+        <% if (currentUser.role === "DoiTac") { %>
+          <%- include('../_template/sidebar/partner'); %>
+        <% } %>
+        <% if (currentUser.role === "NhanVien") { %>
+          <%- include('../_template/sidebar/employee'); %>
+        <% } %>
+        <% if (currentUser.role === "KhachHang") { %>
+          <%- include('../_template/sidebar/customer'); %>
+        <% } %>
+        <% if (currentUser.role === "TaiXe") { %>
+          <%- include('../_template/sidebar/driver'); %>
+        <% } %>
       </div>
 
       <div class="col-12 col-md-9">
