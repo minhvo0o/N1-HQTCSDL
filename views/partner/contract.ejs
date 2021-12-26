@@ -11,25 +11,79 @@
   <div class="container">
     <h1>Thông tin hợp đồng</h1>
 
+    <% if (typeof error !== "undefined" && error) { %>
+      <div class="alert alert-danger" role="alert">
+        <%= error %>
+      </div>
+    <% } %>
+
+    <% if (typeof success !== "undefined" && success) { %>
+      <div class="alert alert-success" role="alert">
+        <%= success %>
+      </div>
+    <% } %>
+
     <form method="post" action="/partner/contract">
       <div class="mb-3">
-        <label for="MSTDoiTac" class="form-label">Mã số thuế</label>
-        <input type="text" class="form-control" id="MSTDoiTac" name="MSTDoiTac" placeholder="Mã số thuế">
+        <label for="MaHopDong" class="form-label">Mã hợp đồng</label>
+        <input
+          type="text"
+          class="form-control"
+          id="MaHopDong"
+          name="MaHopDong"
+          placeholder="Mã hợp đồng"
+          required
+        >
       </div>
 
       <div class="mb-3">
-        <label for="NguoiDaiDien" class="form-label">Người đại diện</label>
-        <input type="text" class="form-control" id="NguoiDaiDien" name="NguoiDaiDien" placeholder="Người đại diện">
+        <label for="MSTDoiTac" class="form-label">Đối tác</label>
+        <select class="form-select" id="MSTDoiTac" name="MSTDoiTac" required>
+          <% for (let partner of partners) { %>
+            <option value="<%= partner.MSTDoiTac %>"><%= partner.TenDoiTac %></option>
+          <% } %>
+        </select>
       </div>
 
       <div class="mb-3">
-        <label for="SoChiNhanh" class="form-label">Số chi nhánh đăng kí</label>
-        <input type="number" class="form-control" id="SoChiNhanh" name="SoChiNhanh" placeholder="Số chi nhánh đăng kí">
+        <label for="MSTNhanVien" class="form-label">Nhân viên</label>
+        <select class="form-select" id="MSTNhanVien" name="MSTNhanVien" required>
+          <% for (let employee of employees) { %>
+            <option value="<%= employee.MSTNhanVien %>"><%= employee.TenNV %></option>
+          <% } %>
+        </select>
       </div>
 
       <div class="mb-3">
-        <label for="DiaChiCacChiNhanh" class="form-label">Địa chỉ các chi nhánh</label>
-        <input type="number" class="form-control" id="DiaChiCacChiNhanh" name="DiaChiCacChiNhanh" placeholder="Địa chỉ các chi nhánh">
+        <label for="ThoiHan" class="form-label">Thời hạn</label>
+        <input
+          type="date"
+          class="form-control"
+          id="ThoiHan"
+          name="ThoiHan"
+          placeholder="Thời hạn"
+          required
+        >
+      </div>
+
+      <div class="mb-3">
+        <label for="PhanTramHoaHong" class="form-label">Phần trăm hoa hồng</label>
+        <input
+          type="number"
+          class="form-control"
+          id="PhanTramHoaHong"
+          name="PhanTramHoaHong"
+          placeholder="Phần trăm hoa hồng"
+          required
+        >
+      </div>
+
+      <div class="mb-3">
+        <label for="TinhTrangHD" class="form-label">Tình trạng</label>
+        <select class="form-select" id="TinhTrangHD" name="TinhTrangHD" required>
+          <option value="0">Chưa duyệt</option>
+          <option value="1">Đã duyệt</option>
+        </select>
       </div>
 
       <button type="submit" class="btn btn-primary">Lập hợp đồng</button>

@@ -1,6 +1,6 @@
 const express = require('express')
 const router = express.Router()
-const { PartnerModel, ProductModel, CustomerModel } = require('../models')
+const { PartnerModel, ProductModel, CustomerModel, EmployeeModel } = require('../models')
 
 router.get('/register', (req, res, next) => {
   // const defaultValues = {
@@ -25,7 +25,7 @@ router.post('/register', async (req, res) => {
     await PartnerModel.createPartner(req.body)
     res.render('partner/register', {
       defaultValues: req.body,
-      success: 'Đăng kí thông tin đối tác'
+      success: 'Đăng kí thông tin đối tác thành công'
     })
   } catch (err) {
     res.render('partner/register', {
@@ -35,8 +35,38 @@ router.post('/register', async (req, res) => {
   }
 })
 
-router.get('/contract', function (req, res, next) {
-  res.render('partner/contract')
+router.get('/contract', async (req, res, next) => {
+  const partners = await PartnerModel.getPartners()
+  const employees = await EmployeeModel.getEmployees()
+
+  res.render('partner/contract', {
+    partners,
+    employees
+  })
+})
+
+router.post('/contract', async (req, res) => {
+  let partners = []
+  let employees = []
+
+  try {
+    partners = await PartnerModel.getPartners()
+    employees = await EmployeeModel.getEmployees()
+
+    await PartnerModel.createContract(req.body)
+
+    res.render('partner/contract', {
+      partners,
+      employees,
+      success: 'Thêm thông tin hợp đồng thành công'
+    })
+  } catch (err) {
+    res.render('partner/contract', {
+      partners,
+      employees,
+      error: err.message
+    })
+  }
 })
 
 router.get('/manage-product', async (req, res, next) => {

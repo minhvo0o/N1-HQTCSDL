@@ -38,7 +38,7 @@ const getContracts = () => {
   return new Promise((resolve, reject) => {
     const request = new Request('SELECT * FROM HopDong', (err, rowCount, rows) => {
       if (err) {
-        res.send(err.message)
+        reject(err)
       }
     })
     const data = []

@@ -1,9 +1,41 @@
 const { Request, TYPES } = require('tedious')
 const { databaseUtil } = require('../utils')
+const _ = require('lodash')
 
 const { connection } = databaseUtil
 
-const createPartner = function queryDatabase(body) {
+const getPartners = function queryDatabase () {
+  return new Promise((resolve, reject) => {
+    const request = new Request(
+      'SELECT * FROM DoiTac',
+      (err, rowCount, rows) => {
+        if (err) {
+          reject(err)
+        }
+      }
+    )
+
+    const data = []
+
+    request.on('row', columns => {
+      const obj = {}
+
+      columns.forEach(column => {
+        obj[column.metadata.colName] = column.value
+      })
+
+      data.push(obj)
+    })
+
+    request.on('requestCompleted', function () {
+      resolve(data)
+    })
+
+    connection.execSql(request)
+  })
+}
+
+const createPartner = (body) => {
   return new Promise((resolve, reject) => {
     const sql = `
       INSERT DoiTac (
@@ -49,7 +81,6 @@ const createPartner = function queryDatabase(body) {
     const request = new Request(sql, function (err) {
       if (err) {
         reject(err)
-        console.log(err)
       }
     })
 
@@ -65,7 +96,7 @@ const createPartner = function queryDatabase(body) {
     request.addParameter('DienThoaiDT', TYPES.VarChar, body.DienThoaiDT)
     request.addParameter('Email', TYPES.VarChar, body.Email)
 
-    const data = []
+    const rows = []
 
     request.on('row', columns => {
       const obj = {}
@@ -74,37 +105,72 @@ const createPartner = function queryDatabase(body) {
         obj[column.metadata.colName] = column.value
       })
 
-      data.push(obj)
+      rows.push(obj)
     })
 
     request.on('requestCompleted', function () {
-      resolve(data)
+      resolve(_.first(rows))
     })
 
     connection.execSql(request)
   })
 }
 
-const getPartners = () => {
+const createContract = (body) => {
   return new Promise((resolve, reject) => {
-    const request = new Request('SELECT * FROM DoiTac', (err, rowCount, rows) => {
+    const sql = `
+      INSERT HopDong (
+        MaHopDong,
+        MSTDoiTac,
+        MSTNhanVien,
+        ThoiHan,
+        PhanTramHoaHong,
+        TinhTrangHD
+      )
+      OUTPUT
+        INSERTED.MaHopDong,
+        INSERTED.MSTDoiTac,
+        INSERTED.MSTNhanVien,
+        INSERTED.ThoiHan,
+        INSERTED.PhanTramHoaHong,
+        INSERTED.TinhTrangHD
+      VALUES(
+        @MaHopDong,
+        @MSTDoiTac,
+        @MSTNhanVien,
+        @ThoiHan,
+        @PhanTramHoaHong,
+        @TinhTrangHD
+      );
+    `
+
+    const request = new Request(sql, (err) => {
       if (err) {
         reject(err)
       }
     })
 
-    const data = []
+    request.addParameter('MaHopDong', TYPES.Char, body.MaHopDong)
+    request.addParameter('MSTDoiTac', TYPES.Int, body.MSTDoiTac)
+    request.addParameter('MSTNhanVien', TYPES.Int, body.MSTNhanVien)
+    request.addParameter('ThoiHan', TYPES.Date, body.ThoiHan)
+    request.addParameter('PhanTramHoaHong', TYPES.Int, body.PhanTramHoaHong)
+    request.addParameter('TinhTrangHD', TYPES.Bit, parseInt(body.TinhTrangHD))
+
+    const rows = []
 
     request.on('row', columns => {
       const obj = {}
+
       columns.forEach(column => {
         obj[column.metadata.colName] = column.value
       })
-      data.push(obj)
+
+      rows.push(obj)
     })
 
-    request.on('requestCompleted', () => {
-      resolve(data)
+    request.on('requestCompleted', function () {
+      resolve(_.first(rows))
     })
 
     connection.execSql(request)
@@ -112,6 +178,7 @@ const getPartners = () => {
 }
 
 module.exports = {
+  getPartners,
   createPartner,
-  getPartners
+  createContract
 }
