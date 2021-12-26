@@ -16,17 +16,15 @@
         <tr>
           <th scope="col">Mã ĐH</th>
           <th scope="col">Thông tin</th>
-          <th scope="col">Tình trạng</th>
           <th scope="col">Số tiền</th>
         </tr>
       </thead>
       <tbody>
-        <% for(let i = 1; i <= 10; ++i) { %>
+        <% for(let order of orders) { %>
           <tr>
-            <th scope="row">DH<%= i %></th>
-            <td>Gạo Sóc Trăng chất lượng cao <%= i %></td>
-            <td>Đã nhận tiền</td>
-            <td>30,000</td>
+            <th scope="row"><%= order.MaDH %></th>
+            <td> <%= order.TenSP %></td>
+            <td><%= order.PhiVC %></td>
           </tr>
         <% } %>
       </tbody>
