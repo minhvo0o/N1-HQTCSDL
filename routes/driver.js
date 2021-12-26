@@ -2,10 +2,6 @@ const express = require('express')
 const router = express.Router()
 const { CustomerModel } = require('../models')
 
-router.get('/', function (req, res, next) {
-  res.send('Driver')
-})
-
 router.get('/register', function (req, res, next) {
   res.render('driver/register')
 })
