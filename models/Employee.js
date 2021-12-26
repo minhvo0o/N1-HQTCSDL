@@ -28,7 +28,6 @@ const getEmployees = function queryDatabase () {
     })
 
     request.on('requestCompleted', function () {
-      connection.close()
       resolve(data)
     })
 

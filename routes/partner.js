@@ -1,6 +1,6 @@
 const express = require('express')
 const router = express.Router()
-const { PartnerModel } = require('../models')
+const { PartnerModel, EmployeeModel } = require('../models')
 
 router.get('/register', (req, res, next) => {
   // const defaultValues = {
@@ -35,8 +35,14 @@ router.post('/register', async (req, res) => {
   }
 })
 
-router.get('/contract', function (req, res, next) {
-  res.render('partner/contract')
+router.get('/contract', async (req, res, next) => {
+  const partners = await PartnerModel.getPartners()
+  const employees = await EmployeeModel.getEmployees()
+
+  res.render('partner/contract', {
+    partners,
+    employees
+  })
 })
 
 router.get('/manage-product', function (req, res) {
