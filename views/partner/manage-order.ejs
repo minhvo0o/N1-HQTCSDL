@@ -15,23 +15,19 @@
       <thead>
         <tr>
           <th scope="col">Mã ĐH</th>
-          <th scope="col">Thông tin</th>
-          <th scope="col">Tình trạng</th>
+          <th scope="col">Phí vận chuyển</th>
+          <th scope="col">Địa chỉ giao hàng</th>
+          <th scope="col">Ngày đặt hàng</th>
           <th scope="col">Tuỳ chỉnh</th>
         </tr>
       </thead>
       <tbody>
-        <% for(let order in orders) { %>
+        <% for(let order of orders) { %>
           <tr>
-            <th scope="row">DH<%= i %></th>
-            <td>Gạo Sóc Trăng chất lượng cao <%= i %></td>
-            <td>
-              <% if (i % 2 === 0) { %>
-                <span>Đã giao</span>
-              <% } else { %>
-                <span>Đang giao</span>
-              <% } %>
-            </td>
+            <td> <%= order.MaDH %></td>
+            <td> <%= order.PhiVC %></td>
+            <td> <%= order.DiaChiGiaoHang %></td>
+            <td> <%= order.NgayDatHang %></td>
             <td>
               <a href="#">Xem</a>
               <a href="#">Sửa</a>
