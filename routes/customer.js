@@ -2,10 +2,6 @@ const express = require('express')
 const { CustomerModel, ProductModel } = require('../models')
 const router = express.Router()
 
-router.get('/', function (req, res, next) {
-  res.render('customer/index')
-})
-
 router.get('/create-order', async (req, res) => {
   const customers = await CustomerModel.getCustomers()
   res.render('customer/create-order', {

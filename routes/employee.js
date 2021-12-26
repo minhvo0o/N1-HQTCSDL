@@ -43,14 +43,14 @@ const { EmployeeModel, PartnerModel } = require('../models')
 //     })
 // })
 
-router.get('/', async (req, res, next) => {
-  try {
-    const employees = await EmployeeModel.getEmployees()
-    res.render('employee/index', { list: employees })
-  } catch (err) {
-    res.send('Error ' + err.message)
-  }
-})
+// router.get('/', async (req, res, next) => {
+//   try {
+//     const employees = await EmployeeModel.getEmployees()
+//     res.render('employee/index', { list: employees })
+//   } catch (err) {
+//     res.send('Error ' + err.message)
+//   }
+// })
 
 router.get('/contracts', async (req, res, next) => {
   try {

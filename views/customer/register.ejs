@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="vi">
+
+<head>
+  <%- include('../_template/head'); %>
+  <title>Đăng kí làm Khách hàng</title>
+</head>
+
+<body>
+  <%- include('../_template/navbar'); %>
+
+  <div class="container">
+    <h1>Đăng kí thông tin khách hàng</h1>
+
+    <form action="">
+      <p class="mt-2">Username</p>
+      <input type="text" class="form-control" name="username" id="username">
+      <p class="mt-2">Password</p>
+      <input type="text" class="form-control" name="password" id="password">
+      <p class="mt-2">Họ tên</p>
+      <input type="text" class="form-control" name="name" id="name">
+      <p class="mt-2">Số điện thoại</p>
+      <input type="text" class="form-control" name="phone" id="phone">
+      <p class="mt-2">Địa chỉ</p>
+      <input type="text" class="form-control" name="address" id="address">
+      <p class="mt-2">Email</p>
+      <input type="text" class="form-control" name="email" id="email">
+      <button type="submit" class="btn btn-primary col-12 mt-4">Đăng kí</button>
+    </form>
+  </div>
+
+  <%- include('../_template/foot'); %>
+</body>
+
+</html>
