@@ -21,10 +21,10 @@
         </tr>
       </thead>
       <tbody>
-        <% for(let i = 1; i <= 10; ++i) { %>
+        <% for(let order of orders) { %>
           <tr>
-            <th scope="row">DH<%= i %></th>
-            <td>Gạo Sóc Trăng chất lượng cao <%= i %></td>
+            <th scope="row"><%= order.MaSP %></th>
+            <td><%= order.TenSP %></td>
             <td>
               <select class="form-select" style="width: 160px;">
                 <option value="ChuaNhan">Chưa nhận</option>
