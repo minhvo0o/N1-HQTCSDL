@@ -7,9 +7,12 @@
 </head>
 
 <body>
-    <h2 class="card-title mt-3 text-center">Đăng kí thông tin nhân viên</h2>
-    <form action="">
-      <div class="container mt-4" style="max-width: 400px;">
+  <%- include('../_template/navbar'); %>
+
+    <div class="container">
+      <h1>Đăng kí thông tin nhân viên</h1>
+
+      <form action="">
         <p class="mt-2">Username</p>
         <input type="text" class="form-control" name="username" id="username">
         <p class="mt-2">Password</p>
@@ -31,8 +34,8 @@
         <p class="mt-2">Giới tính</p>
         <input type="text" class="form-control" name="gender" id="gender">
         <button type="submit" class="btn btn-primary col-12 mt-4">Đăng kí</button>
-      </div>
-    </form>
+      </form>
+    </div>
   <%- include('../_template/foot'); %>
 </body>
 
