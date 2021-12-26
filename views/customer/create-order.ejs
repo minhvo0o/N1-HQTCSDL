@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="vi">
+
+<head>
+  <%- include('../_template/head'); %>
+
+  <title>Thêm đơn hàng</title>
+</head>
+
+<body>
+  <div class="container">
+    <h1>Thêm đơn hàng</h1>
+
+    <% if (typeof error !== "undefined" && error) { %>
+      <div class="alert alert-danger" role="alert">
+        <%= error %>
+      </div>
+    <% } %>
+
+    <% if (typeof success !== "undefined" && success) { %>
+      <div class="alert alert-success" role="alert">
+        <%= success %>
+      </div>
+    <% } %>
+
+    <form method="post" action="/customer/create-order">
+      <div class="mb-3">
+        <label for="MaKH" class="form-label">Khách hàng</label>
+        <select class="form-select" id="MaKH" name="MaKH" required>
+          <% for (let customer of customers) { %>
+            <option value="<%= customer.MaKH %>"><%= customer.HoTenKH %></option>
+          <% } %>
+        </select>
+      </div>
+
+      <div class="mb-3">
+        <label for="HinhThucTT" class="form-label">Hình thức thanh toán</label>
+        <select class="form-select" id="HinhThucTT" name="HinhThucTT" required>
+          <option value="0">Thanh toán khi nhận hàng</option>
+          <option value="1">Chuyển khoản ngân hàng</option>
+        </select>
+      </div>
+
+      <div class="mb-3">
+        <label for="DiaChiGiaoHang" class="form-label">Địa chỉ giao hàng</label>
+        <input
+          type="text"
+          class="form-control"
+          id="DiaChiGiaoHang"
+          name="DiaChiGiaoHang"
+          placeholder="Địa chỉ giao hàng"
+          required
+        >
+      </div>
+
+      <!-- <div class="mb-3">
+        <label for="NgayDatHang" class="form-label">Ngày đặt hàng</label>
+        <input
+          type="date"
+          class="form-control"
+          id="NgayDatHang"
+          name="NgayDatHang"
+          placeholder="Ngày đặt hàng"
+          required
+          value="<%= new Date() %>"
+        >
+      </div> -->
+
+      <button type="submit" class="btn btn-primary">Tạo đơn hàng</button>
+    </form>
+  </div>
+
+  <%- include('../_template/foot'); %>
+</body>
+
+</html>

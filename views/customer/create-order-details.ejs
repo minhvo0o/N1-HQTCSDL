@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="vi">
+
+<head>
+  <%- include('../_template/head'); %>
+
+  <title>Đơn hàng <%= MaDH %> | Thêm sản phẩm</title>
+</head>
+
+<body>
+  <div class="container">
+    <h1>Đơn hàng <%= MaDH %> | Thêm sản phẩm</h1>
+
+    <% if (typeof error !== "undefined" && error) { %>
+      <div class="alert alert-danger" role="alert">
+        <%= error %>
+      </div>
+    <% } %>
+
+    <% if (typeof success !== "undefined" && success) { %>
+      <div class="alert alert-success" role="alert">
+        <%= success %>
+      </div>
+    <% } %>
+
+    <form method="post" action="/customer/create-order-details/<%= MaDH %>">
+      <div class="mb-3">
+        <label for="MaSP" class="form-label">Sản phẩm</label>
+        <select class="form-select" id="MaSP" name="MaSP" required>
+          <% for (let product of products) { %>
+            <option value="<%= product.MaSP %>"><%= product.TenSP%></option>
+          <% } %>
+        </select>
+      </div>
+
+      <div class="mb-3">
+        <label for="SoLuong" class="form-label">Số lượng</label>
+        <input
+          type="number"
+          class="form-control"
+          id="SoLuong"
+          name="SoLuong"
+          placeholder="Số lượng"
+          required
+          value="1"
+        >
+      </div>
+
+      <button type="submit" class="btn btn-primary">Thêm sản phẩm</button>
+    </form>
+  </div>
+
+  <%- include('../_template/foot'); %>
+</body>
+
+</html>
