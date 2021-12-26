@@ -15,17 +15,19 @@
       <thead>
         <tr>
           <th scope="col">Mã SP</th>
-          <th scope="col">Thông tin</th>
+          <th scope="col">Tên sản phẩm</th>
           <th scope="col">Chi nhánh</th>
+          <th scope="col">Giá bán</th>
           <th scope="col">Tuỳ chỉnh</th>
         </tr>
       </thead>
       <tbody>
-        <% for(let i = 1; i <= 10; ++i) { %>
+        <% for(let product of products) { %>
           <tr>
-            <th scope="row">SP<%= i %></th>
-            <td>Gạo Sóc Trăng chất lượng cao <%= i %></td>
-            <td>Sóc Trăng</td>
+            <th scope="row">SP<%= product.MaSP %></th>
+            <td><%= product.TenSP %></td>
+            <td><%= product.ChiNhanhCungCap %></td>
+            <td><%= product.GiaBanSP %></td>
             <td>
               <a href="#">Thêm</a>
               <a href="#">Xoá</a>

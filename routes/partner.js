@@ -1,6 +1,6 @@
 const express = require('express')
 const router = express.Router()
-const { PartnerModel } = require('../models')
+const { PartnerModel, ProductModel, CustomerModel } = require('../models')
 
 router.get('/register', (req, res, next) => {
   // const defaultValues = {
@@ -39,12 +39,14 @@ router.get('/contract', function (req, res, next) {
   res.render('partner/contract')
 })
 
-router.get('/manage-product', function (req, res) {
-  res.render('partner/manage-product')
+router.get('/manage-product', async (req, res, next) => {
+  const products = await ProductModel.getProducts()
+  res.render('partner/manage-product', { products: products })
 })
 
-router.get('/manage-order', function (req, res) {
-  res.render('partner/manage-order')
+router.get('/manage-order', async (req, res, next) => {
+  const orders = await CustomerModel.getOrders()
+  res.render('partner/manage-order', { orders: orders })
 })
 
 module.exports = router
