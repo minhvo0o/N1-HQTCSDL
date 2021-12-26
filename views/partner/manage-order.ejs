@@ -21,17 +21,11 @@
         </tr>
       </thead>
       <tbody>
-        <% for(let order in orders) { %>
+        <% for(let order of orders) { %>
           <tr>
-            <th scope="row">DH<%= i %></th>
-            <td>Gạo Sóc Trăng chất lượng cao <%= i %></td>
-            <td>
-              <% if (i % 2 === 0) { %>
-                <span>Đã giao</span>
-              <% } else { %>
-                <span>Đang giao</span>
-              <% } %>
-            </td>
+            <td> <%= order.MaDH %></td>
+            <td> <%= order.TenSP %></td>
+            <td> <%= order.TinhTrangVC %></td>
             <td>
               <a href="#">Xem</a>
               <a href="#">Sửa</a>

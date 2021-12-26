@@ -91,7 +91,7 @@ router.get('/edit-info', function (req, res, next) {
 
 router.get('/order-status', async (req, res, next) => {
   const orders = await CustomerModel.getOrders()
-  res.render('customer/order-status', { list: orders })
+  res.render('customer/order-status', { orders: orders })
 })
 
 module.exports = router
