@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="vi">
+
+<head>
+  <%- include('../_template/head'); %>
+  <title>Quản lí đối tác</title>
+</head>
+
+<body>
+
+  <h2 class="card-title mt-5 text-center">Quản lí đối tác</h2>
+    
+    <div class="container mt-5" style="max-width: 1200px;">
+
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">MST đối tác</th>
+            <th scope="col">Tên đối tác</th>
+            <th scope="col">Người đại diện</th>
+            <th scope="col">Đơn mỗi ngày</th>
+            <th scope="col">Loại hàng</th>
+            <th scope="col">Địa chỉ</th>
+            <th scope="col">Điện thoại</th>
+            <th scope="col">Email</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% for (let partner of partners) { %>
+          <tr>
+            <td><%= partner.MSTDoiTac %></td>
+            <td><%= partner.TenDoiTac %></td>
+            <td><%= partner.NguoiDaiDien %></td>
+            <td><%= partner.DonMoiNgay %></td>
+            <td><%= partner.LoaiHang %></td>
+            <td><%= partner.DiaChiKinhDoanh %></td>
+            <td><%= partner.DienThoaiDT %></td>
+            <td><%= partner.Email %></td>
+            <td>
+              <div class="row">
+                <div class="col-3">
+                  <a href="#">Xem</a>
+                </div>
+                <div class="col-8">
+                  <a href="#">Gởi thông báo</a>
+                </div>
+              </div>
+            </td>
+          <% } %> 
+          </tr>
+        </tbody>
+      </table>
+    
+      
+      <nav aria-label="...">
+        <ul class="pagination justify-content-end">
+          <li class="page-item disabled">
+            <span class="page-link">Previous</span>
+          </li>
+          <li class="page-item active"><a class="page-link" href="#">1</a></li>
+          <li class="page-item"><a class="page-link" href="#">2</a></li>
+          <li class="page-item"><a class="page-link" href="#">3</a></li>
+          <li class="page-item">
+            <a class="page-link" href="#">Next</a>
+          </li>
+        </ul>
+      </nav>
+
+
+
+  <%- include('../_template/foot'); %>
+</body>
+
+</html>

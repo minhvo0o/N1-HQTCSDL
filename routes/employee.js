@@ -1,7 +1,7 @@
 const express = require('express')
 const router = express.Router()
 // const { Request } = require('tedious')
-const { EmployeeModel } = require('../models')
+const { EmployeeModel, PartnerModel } = require('../models')
 
 // const { connection } = con
 
@@ -56,6 +56,15 @@ router.get('/contracts', async (req, res, next) => {
   try {
     const contracts = await EmployeeModel.getContracts()
     res.render('employee/contracts', { list: contracts })
+  } catch (err) {
+    res.send('Error ' + err.message)
+  }
+})
+
+router.get('/manage-partner', async (req, res, next) => {
+  try {
+    const partners = await PartnerModel.getPartners()
+    res.render('employee/manage-partner', { partners })
   } catch (err) {
     res.send('Error ' + err.message)
   }
