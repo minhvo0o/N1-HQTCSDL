@@ -11,24 +11,22 @@
     
     <div class="container mt-5" style="max-width: 1200px;">
 
-      <table class="table">
-        <thead class="thead-light">
+      <table class="table table-hover">
+        <thead>
           <tr>
             <th scope="col">Mã ĐH</th>
-            <th scope="col">Phí vận chuyển</th>
-            <th scope="col">Địa chỉ giao hàng</th>
-            <th scope="col">Ngày đặt hàng</th>
+            <th scope="col">Thông tin</th>
+            <th scope="col">Tình trạng</th>
           </tr>
         </thead>
         <tbody>
-          <% list.forEach(order => { %> 
-          <tr>
-            <td> <%= order.MaDH %></td>
-            <td> <%= order.PhiVC %></td>
-            <td> <%= order.DiaChiGiaoHang %></td>
-            <td> <%= order.NgayDatHang %></td>
-          </tr>
-          <% }) %>
+          <% for(let order of orders) { %>
+            <tr>
+              <td> <%= order.MaDH %></td>
+              <td> <%= order.TenSP %></td>
+              <td> <%= order.TinhTrangVC %></td>
+            </tr>
+          <% } %>
         </tbody>
       </table>
     
