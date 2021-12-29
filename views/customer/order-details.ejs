@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="vi">
+
+<head>
+  <%- include('../_template/head'); %>
+  <title>Xem đơn hàng</title>
+</head>
+
+<body>
+  <%- include('../_template/navbar'); %>
+
+  <div class="container">
+    <div class="row">
+      <div class="col-12 col-md-3">
+        <%- include('../_template/sidebar/customer'); %>
+      </div>
+
+      <div class="col-12 col-md-9">
+        <h1>Chi tiết đơn hàng <%= order.MaDH %></h1>
+
+        <table class="table table-hover">
+          <thead>
+            <tr>
+              <th scope="col">Thông tin</th>
+              <th scope="col">Nội dung</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Mã ĐH</td>
+              <td><%= order.MaDH %></td>
+            </tr>
+
+            <tr>
+              <td>Mã KH / Tên KH</td>
+              <td>
+                <%= order.MaKH %> - <%= order.HoTenKH %>
+              </td>
+            </tr>
+
+            <tr>
+              <td>Phí vận chuyển</td>
+              <td>
+                <%= new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(order.PhiVC) %>
+              </td>
+            </tr>
+
+            <tr>
+              <td>Hình thức thanh toán</td>
+              <td>
+                <% if (order.HinhThucTT) { %>
+                  <span>COD</span>
+                <% } else { %>
+                  <span>Bank</span>
+                <% } %>
+              </td>
+            </tr>
+
+            <tr>
+              <td>Ngày đặt hàng</td>
+              <td><%= dayjs(order.NgayDatHang).format("DD-MM-YYYY") %></td>
+            </tr>
+          </tbody>
+        </table>
+
+        <h4>Danh sách sản phẩm</h4>
+
+        <table class="table table-hover">
+          <thead>
+            <tr>
+              <th scope="col">Mã SP</th>
+              <th scope="col">Tên SP</th>
+              <th scope="col">Giá bán</th>
+              <th scope="col">Số lượng</th>
+              <th scope="col">Thành tiền</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% for(let orderDetail of orderDetails) { %>
+              <tr>
+                <td><%= orderDetail.MaSP %></td>
+                <td><%= orderDetail.TenSP %></td>
+                <td>
+                  <%= new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(orderDetail.GiaBan) %>
+                </td>
+                <td><%= orderDetail.SoLuong %></td>
+                <td>
+                  <%= new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(orderDetail.ThanhTien) %>
+                </td>
+              </tr>
+            <% } %>
+          </tbody>
+          <footer>
+            <tr>
+              <td colspan="4">
+                <strong>Tổng tiền</strong>
+              </td>
+              <td colspan="1">
+                <strong><%= new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(order.TongTien) %></strong>
+              </td>
+            </tr>
+          </footer>
+        </table>
+
+        <h4>Thông tin vận chuyển</h4>
+
+        <table class="table table-hover">
+          <thead>
+            <tr>
+              <th scope="col">STT</th>
+              <th scope="col">Thời gian cập nhật</th>
+              <th scope="col">Trạng thái</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% for(let transport of orderTransports) { %>
+              <tr>
+                <td><%= transport.STT %></td>
+                <td><%= dayjs(transport.ThoiGianCapNhat).format("DD-MM-YYYY") %></td>
+                <td><%= transport.TinhTrangVC %></td>
+              </tr>
+            <% } %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <%- include('../_template/foot'); %>
+</body>
+
+</html>

@@ -2,6 +2,29 @@ const express = require('express')
 const { CustomerModel, ProductModel } = require('../models')
 const router = express.Router()
 
+router.get('/manage-order', async (req, res, next) => {
+  const orders = await CustomerModel.getOrders2()
+  res.render('customer/manage-order', { orders: orders })
+})
+
+router.get('/order-details/:MaDH', async (req, res, next) => {
+  try {
+    const { MaDH } = req.params
+    const order = await CustomerModel.getOrder(MaDH)
+
+    if (!order) {
+      throw new Error('Đơn hàng không tồn tại')
+    }
+
+    const orderDetails = await CustomerModel.getOrderDetails(MaDH)
+    const orderTransports = await CustomerModel.getOrderTransports(MaDH)
+
+    res.render('customer/order-details', { order, orderDetails, orderTransports })
+  } catch (error) {
+    next(error)
+  }
+})
+
 router.get('/create-order', async (req, res) => {
   const customers = await CustomerModel.getCustomers()
   res.render('customer/create-order', {
@@ -9,7 +32,7 @@ router.get('/create-order', async (req, res) => {
   })
 })
 
-router.post('/create-order', async (req, res) => {
+router.post('/create-order', async (req, res, next) => {
   // const body = {
   //   MaKH: '',
   //   HinhThucTT: '',
@@ -22,14 +45,9 @@ router.post('/create-order', async (req, res) => {
       ...req.body,
       NgayDatHang: new Date()
     })
-    res.json({
-      success: 'Thêm đơn hàng thành công',
-      note: 'Chuyển sang trang danh sách đơn hàng'
-    })
+    res.redirect('/customer/manage-order')
   } catch (err) {
-    res.json({
-      error: err.message
-    })
+    next(err)
   }
 })
 

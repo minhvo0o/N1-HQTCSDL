@@ -3,7 +3,7 @@
 
 <head>
   <%- include('../_template/head'); %>
-  <title>Xem tình trạng đơn hàng</title>
+  <title>Danh sách đơn hàng</title>
 </head>
 
 <body>
@@ -16,18 +16,18 @@
       </div>
 
       <div class="col-12 col-md-9">
-        <h1>Tình trạng đơn hàng (<%= orders.length %>)</h1>
+        <h1>Danh sách đơn hàng (<%= orders.length %>)</h1>
 
         <table class="table table-hover">
           <thead>
             <tr>
               <th scope="col">Mã ĐH</th>
               <th scope="col">Mã KH / Tên KH</th>
-              <th scope="col">Ngày đặt hàng</th>
+              <th scope="col">Phí vận chuyển</th>
               <th scope="col">Tổng tiền</th>
               <th scope="col">Thanh toán</th>
-              <th scope="col">Mã vận chuyển</th>
-              <th scope="col">Tình trạng</th>
+              <th scope="col">Ngày đặt hàng</th>
+              <th scope="col">Thao tác</th>
             </tr>
           </thead>
           <tbody>
@@ -38,7 +38,9 @@
                   <%= order.MaKH %><br />
                   <%= order.HoTenKH %>
                 </td>
-                <td><%= dayjs(order.NgayDatHang).format("DD-MM-YYYY") %></td>
+                <td>
+                  <%= new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(order.PhiVC) %>
+                </td>
                 <td>
                   <%= new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(order.TongTien) %>
                 </td>
@@ -49,8 +51,12 @@
                     <span>Bank</span>
                   <% } %>
                 </td>
-                <td><%= order.MaVC %></td>
-                <td><%= order.TinhTrangVC %></td>
+                <td><%= dayjs(order.NgayDatHang).format("DD-MM-YYYY") %></td>
+                <td>
+                  <a href="/customer/create-order-details/<%= order.MaDH %>">Thêm sản phẩm</a>
+                  <br />
+                  <a href="/customer/order-details/<%= order.MaDH %>">Xem chi tiết</a>
+                </td>
               </tr>
             <% } %>
           </tbody>
